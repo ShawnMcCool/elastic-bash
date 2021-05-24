@@ -1,0 +1,8 @@
+#!/bin/bash
+
+source $(dirname -- "$0")/bootstrap
+options=$(options "v|pretty" "indexName")
+
+indexName="$1"
+
+elastic_get "_cat/indices/${indexName}$options"

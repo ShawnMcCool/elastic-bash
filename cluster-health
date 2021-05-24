@@ -1,0 +1,6 @@
+#!/bin/bash
+
+source $(dirname -- "$0")/bootstrap
+options=$(options "pretty")
+
+elastic_get "_cluster/health$options"

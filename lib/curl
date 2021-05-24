@@ -1,0 +1,5 @@
+#!/bin/bash
+
+curl_call() {
+    /usr/bin/curl -X"$1" "${@:2}"
+}

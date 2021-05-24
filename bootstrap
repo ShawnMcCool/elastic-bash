@@ -1,0 +1,81 @@
+#!/bin/bash
+
+# library path
+export lib="$(dirname $0)/lib"
+source $lib/strings
+
+export commandArguments="$@"
+
+set -e
+
+print_usage() {
+    IFS='|' read -r -a options <<< "$1"
+    arguments="$2"
+
+    tableData=""
+
+    for option in "${options[@]}"
+    do
+        optionIsDefault=false
+        if [[ ${option:0:1} != "!" ]]
+        then
+            optionIsDefault=true
+        else
+            option="${option:1}"
+        fi
+
+        tableData+="\n${option}:${optionIsDefault}"
+    done
+
+    table=$(echo -e "------------:----------\n${tableData}" | column -s ":" --table-columns 'env variable','is default?' --table --output-width 30)
+    scriptName=$(basename $0)
+
+    echo -e "\nHelp for '$scriptName'.\n" >&2
+    echo -e "$table\n" >&2
+    echo -e "Configure using environment variables:\n" >&2
+    echo -e "variable=false variable2=true $scriptName ${arguments}\n" >&2
+}
+
+options() {
+    IFS='|' read -r -a options <<< "$1"
+    
+    firstArgument="${commandArguments[0]}"
+    additionalArguments=${2}
+
+    queryOptions=()
+
+    for option in "${options[@]}"
+    do
+        optionIsDefault=false
+        if [[ ${option:0:1} != "!" ]]
+        then
+            optionIsDefault=true
+        else
+            option="${option:1}"
+        fi
+
+        # if the variable is set and the option is enabled
+        if ! [ -z "${!option}" ] && "${!option}"
+        then
+            queryOptions+=( "$option" )
+        elif [ -z "${!option}" ] && "$optionIsDefault"
+        then
+            queryOptions+=( "$option" )
+        fi
+    done
+
+    if [ ${#queryOptions[@]} -gt 0 ]; then
+        queryString=?$(string_join '&' ${queryOptions[@]})
+    fi
+
+    if [ "$firstArgument" == "-h" ]
+    then
+        print_usage "${1}" "${2}"
+        exit 1
+    fi
+
+    echo "$queryString"
+}
+
+# load elasticsearch dependencies
+source $lib/elasticsearch

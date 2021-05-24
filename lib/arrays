@@ -1,0 +1,5 @@
+#!/bin/bash
+
+function array_contains() {
+    [[ " ${branches[@]} " =~ " ${value} " ]]
+}

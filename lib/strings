@@ -1,0 +1,14 @@
+#!/bin/bash
+
+function string_join {
+    local d=${1-} f=${2-}; if shift 2; then printf %s "$f" "${@/#/$d}"; fi;
+}
+
+function string_trim {
+    if [ $# -eq 0 ]
+    then
+        cat - | xargs
+    else
+        echo "$1" | xargs
+    fi
+}
