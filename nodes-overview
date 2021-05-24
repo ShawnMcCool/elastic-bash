@@ -3,4 +3,4 @@
 source $(dirname -- "$0")/bootstrap
 options=$(options "v" )
 
-elastic_get "_cat/nodes?v"
+elastic_get "_cat/nodes$options"

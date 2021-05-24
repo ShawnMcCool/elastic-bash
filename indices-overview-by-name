@@ -5,4 +5,4 @@ options=$(options "v|pretty" "indexName")
 
 indexName="$1"
 
-elastic_get "_cat/indices/${indexName}$options"
+elastic_get "_cat/indices/$indexName$options"
