@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # library path
-export lib="$(dirname $0)/lib"
+export lib=${ELASTICSEARCH_BASH_API_PATH:-"$(dirname $0)/lib"}
 source $lib/strings
 
 export commandArguments="$@"
