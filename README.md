@@ -8,19 +8,19 @@ Each command has configurations that determine how the commands are viewed etc. 
 
 For example, if you want an overview of a specific index you can run:
 
-```shell
+```bash
 $ ./elastic/indices-overview-by-name <indexName>
 ```
 
 If you want to view it with column headings, set 'v'.
 
-```shell
+```bash
 $ v=true ./elastic/indices-overview-by-name <indexName>
 ```
 
 For help use `-h` as the firt argument.
 
-```shell
+```bash
 $ ./elastic/custer-health -h
 ```
 
@@ -28,7 +28,7 @@ $ ./elastic/custer-health -h
 
 The 'bootstrap' script determines the library path. If you want to change the library path then do so with:
 
-```shell
+```bash
 $ export ELASTICSEARCH_BASH_API_PATH=/the/path
 ```
 
