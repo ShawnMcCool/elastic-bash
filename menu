@@ -1,0 +1,60 @@
+#!/bin/bash
+
+ui="${1:-cli}"
+
+declare -A MAIN_MENU=(
+    [CLUSTERS_MENU]=clusters
+    [DOCUMENTS_MENU]=documents
+    [INDICES_MENU]=indices
+    [SHARDS_MENU]=shards
+)
+
+declare -A DOCUMENTS_MENU=(
+    [1]=eat
+    [2]=a
+    [3]=dick
+    [4]=cat
+)
+
+showGUIDialog() {
+    zenity --title "ElasticSearch" --list --hide-column=1 --column="id" --column="choice" 0 dog 1 cat 2 dogcat
+}
+
+showCLIDialog() {
+    options="$1"
+    dialog --title "Elastic Bash" --menu "Make a Selection" 20 30 4 $options 3>&1 1>&2 2>&3 3>&-
+}
+
+displayMenu() {
+    declare -n menu="$1"
+
+    declare -A optionsArray=()
+
+    let "count = 0"
+
+    for id in "${!menu[@]}"
+    do
+        optionsArray[$count]="${menu[$id]}"
+        let "count += 1"
+    done
+
+    options=""
+    for id in "${!optionsArray[@]}"
+    do
+        name="${optionsArray[$id]}"
+        options=" $id $name $options"
+    done
+
+    if [ "$ui" == "cli" ]
+    then
+        selection=$(showCLIDialog "$options")
+    else
+        selection=$(showGUIDialog "$options")
+    fi
+
+    echo "$selection was selected"
+    nextMenuName="${optionsArray[$selection]^^}_MENU"
+    displayMenu "$nextMenuName"
+}
+
+displayMenu MAIN_MENU

@@ -32,6 +32,12 @@ The 'bootstrap' script determines the library path. If you want to change the li
 $ export ELASTICSEARCH_BASH_API_PATH=/the/path
 ```
 
+Set up the HTTP URL to ElasticSearch. Defaults to: http://0.0.0.0:9200
+
+```bash
+$ export ELASTICSEARCH_HOST="http://0.0.0.0:9200"
+```
+
 This will have to be run every time you open a terminal, or be put into your `.bashrc`.
 
 ## Reference
