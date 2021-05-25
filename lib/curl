@@ -1,5 +1,7 @@
 #!/bin/bash
 
 curl_call() {
-    /usr/bin/curl -X"$1" "${@:2}"
+    method="$1"
+    parameters="${@:2}"
+    /usr/bin/curl -X"$method" "$parameters"
 }

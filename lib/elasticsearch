@@ -2,6 +2,24 @@
 
 source $lib/curl
 
+hostUrl=${ELASTICSEARCH_HOST:-"http://0.0.0.0:9200"}
+
 elastic_get() {
-   curl_call GET http://0.0.0.0:9200/"$1"
+    path="$1"
+    curl_call GET $hostUrl/$path
+}
+
+elastic_post() {
+    path="$1"
+    curl_call POST $hostUrl/$path
+}
+
+elastic_put() {
+    path="$1"
+    curl_call PUT $hostUrl/$path
+}
+
+elastic_delete() {
+    path="$1"
+    curl_call DELETE $hostUrl/$path
 }

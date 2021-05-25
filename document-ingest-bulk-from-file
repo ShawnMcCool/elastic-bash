@@ -1,0 +1,15 @@
+#!/bin/bash
+
+source $(dirname -- "$0")/bootstrap
+options=$(options "pretty" "file")
+
+# file format
+
+# {"index":{"_index":"info","_type":"feed","_id":1}}
+# {"user_id":james4,"handle_name":"james","category":"sport","socialmedia_src":"twitter","text":"manchester united lost","country":"south africa"}
+# {"index":{"_index":"info","_type":"feed","_id":2}}
+# {"user_id":pete09,"handle_name":"pete","category":"politics","socialmedia_src":"facebook","text":"new mayor selected","country":"new zealand"}
+
+file="$1"
+
+elastic_post "info/_bulk$options" --data-binary @"$file"

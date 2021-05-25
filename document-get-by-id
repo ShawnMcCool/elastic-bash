@@ -1,0 +1,10 @@
+#!/bin/bash
+
+source $(dirname -- "$0")/bootstrap
+options=$(options "pretty" "index type id")
+
+index="$1"
+type="$2"
+id="$3"
+
+elastic_get "$index/$type/$id$options"

@@ -1,0 +1,8 @@
+#!/bin/bash
+
+source $(dirname -- "$0")/bootstrap
+options=$(options "v" "index")
+
+index="$1"
+
+elastic_get "_cat/shards$index$options"

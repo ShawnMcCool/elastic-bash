@@ -33,3 +33,9 @@ $ export ELASTICSEARCH_BASH_API_PATH=/the/path
 ```
 
 This will have to be run every time you open a terminal, or be put into your `.bashrc`.
+
+## Reference
+
+The following material was used to put this together:
+
+- https://gist.github.com/ruanbekker/e8a09604b14f37e8d2f743a87b930f93#indices-overview

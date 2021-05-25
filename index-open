@@ -1,0 +1,8 @@
+#!/bin/bash
+
+source $(dirname -- "$0")/bootstrap
+options=$(options "" "index")
+
+index="$1"
+
+elastic_post "$index/_open"

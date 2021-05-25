@@ -1,0 +1,12 @@
+#!/bin/bash
+
+source $(dirname -- "$0")/bootstrap
+options=$(options "" "index type documentJson")
+
+index="$1"
+type="$2"
+documentJson="$3"
+
+# example document json: {"identity": {"name": "ruan", "surname": "bekker"}}
+
+elastic_put "$index/$type" -d \'$documentJson\'

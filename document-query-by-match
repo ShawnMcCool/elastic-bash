@@ -1,0 +1,19 @@
+#!/bin/bash
+
+source $(dirname -- "$0")/bootstrap
+options=$(options "pretty" "index match size")
+
+index="$1"
+match="$2"
+size="$3"
+
+elastic_get "$index/_search$options" -d \'
+{
+  "query": {
+    "match": {
+      "title": "$match"
+    }
+  }, 
+  "size": $size
+}
+\'

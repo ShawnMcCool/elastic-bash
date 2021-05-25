@@ -1,0 +1,10 @@
+#!/bin/bash
+
+source $(dirname -- "$0")/bootstrap
+options=$(options "" "index numberOfReplicas numberOfShards")
+
+index="$1"
+numberOfReplicas="$2"
+numberOfShards="$3"
+
+elastic_put "$index" -d \'{"settings": {"number_of_replicas": "$numberOfReplicas", "number_of_shards": "$numberOfShards"}}\'

@@ -1,13 +1,24 @@
 #!/bin/bash
 
-# library path
-export lib=${ELASTICSEARCH_BASH_API_PATH:-"$(dirname $0)/lib"}
-source $lib/strings
+# global environment variables
+# ----------------------------
+# ELASTICSEARCH_BASH_API_PATH = the folder location of the library scripts (default $(dirname $0)/lib)
+# ELASTICSEARCH_HOST - the URL of the elasticsearch host (default http://0.0.0.0:9200)
 
+# establish library path for includes
+export lib=${ELASTICSEARCH_BASH_API_PATH:-"$(dirname $0)/lib"}
+
+# source dependencies
+source $lib/strings
+source $lib/elasticsearch
+
+# command line arguments
 export commandArguments="$@"
 
+# crash at first exit with an error code
 set -e
 
+# print usage when '-h' is the command's first argument
 print_usage() {
     IFS='|' read -r -a options <<< "$1"
     arguments="$2"
@@ -36,6 +47,7 @@ print_usage() {
     echo -e "variable=false variable2=true $scriptName ${arguments}\n" >&2
 }
 
+# manages input including printing usage and creating the query string from options
 options() {
     IFS='|' read -r -a options <<< "$1"
     
@@ -76,6 +88,3 @@ options() {
 
     echo "$queryString"
 }
-
-# load elasticsearch dependencies
-source $lib/elasticsearch

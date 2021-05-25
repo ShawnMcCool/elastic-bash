@@ -1,0 +1,8 @@
+#!/bin/bash
+
+source $(dirname -- "$0")/bootstrap
+options=$(options "pretty" "index")
+
+index="$1"
+
+elastic_put "$index/_settings$options"
