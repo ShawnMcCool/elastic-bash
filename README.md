@@ -20,7 +20,7 @@ As what? In production.. No. For fun? Maybe! For frustration? Definitely!
 
 ### why environment variables?
 
-Where's the fun in me giving you all the answers. The design supports easy transitions to POSIX style parameters or whatever else.
+Where's the fun in me giving you all the answers? The design supports easy transitions to POSIX style parameters or whatever else.
 
 ## Usage
 
