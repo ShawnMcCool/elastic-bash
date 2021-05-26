@@ -2,9 +2,21 @@
 
 This is a command-line library for interacting with ElasticSearch built on BASH.
 
-**why would you do this?**: Making projects like this is the way that I learn.
+### is this crazy?
 
-**is it even reasonable to use this?**: As what? In production.. No. For fun? Sure!
+Just maybe crazy enough to work! Or just yes?
+
+### why would you do this?
+
+It's just another project designed to improve knowledge of a number of topics. 
+
+### is it feature complete?
+
+Not even close, and never will be.
+
+### is it even reasonable to use this?
+
+As what? In production.. No. For fun? Sure!
 
 **why environment variables for script arguments?**: No particular reason. But thankfully due to the design, it can be swapped out for POSIX style or whatever. 
 
