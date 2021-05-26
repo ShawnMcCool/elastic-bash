@@ -16,7 +16,7 @@ Not even close, never will be.
 
 ### is it even reasonable to use this?
 
-As what? In production.. No. For fun? Sure!
+As what? In production.. No. For fun? Maybe! For frustration? Definitely!
 
 ### why environment variables?
 
