@@ -2,6 +2,12 @@
 
 This is a command-line library for interacting with ElasticSearch built on BASH.
 
+**why would you do this?**: Making projects like this is the way that I learn.
+
+**is it even reasonable to use this?**: As what? In production.. No. For fun? Sure!
+
+**why environment variables for script arguments?**: No particular reason. But thankfully due to the design, it can be swapped out for POSIX style or whatever. 
+
 ## Usage
 
 Each command has configurations that determine how the commands are viewed etc. These are controlled through environment variables. Arguments necessary for the commands are positional arguments.
@@ -39,6 +45,24 @@ $ export ELASTICSEARCH_HOST="http://0.0.0.0:9200"
 ```
 
 This will have to be run every time you open a terminal, or be put into your `.bashrc`.
+
+## Menu
+
+There's a menu system built in.. Run it with 
+
+(for console)
+```bash
+$ ./menu
+```
+
+or
+
+(for windowed)
+```bash
+$ ./menu gui
+```
+
+The menu is clearly incomplete, but easy to modify.
 
 ## Reference
 
