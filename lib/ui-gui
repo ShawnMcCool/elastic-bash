@@ -1,0 +1,16 @@
+#!/bin/bash
+
+showInfo() {
+    commandTitle="$1"
+    info="$2"
+    zenity --info \
+           --title="Elastic Bash : $commandTitle" \
+           --text="$info" \
+           --width=800 \
+           --height=800
+}
+
+showMenu() {
+    options="$1"
+    eval $(printf '%b' "zenity --title \"Elastic Bash\" --list --width=800 --height=800 --hide-column=1 --column=\"id\" --column=\"choice\" $options")
+}

@@ -15,7 +15,7 @@ func_cluster_health() {
 }
 
 func_info_master() {
-    ./info-master
+    showInfo "Master Info" $(./info-master 2>/dev/null)""
 }
 
 declare -A MENU_MAIN=(
@@ -32,10 +32,6 @@ declare -A MENU_CLUSTERS=(
     [FUNC_CLUSTER_HEALTH_INDEX_LEVEL]="index level"
     [FUNC_CLUSTER_HEALTH_SHARDS_LEVEL]="shards level"
 )
-
-# showGUIDialog() {
-#     zenity --title "ElasticSearch" --list --hide-column=1 --column="id" --column="choice" 0 dog 1 cat 2 dogcat
-# }
 
 displayMenu() {
     # the name of the menu
@@ -76,6 +72,9 @@ displayMenu() {
     # target path
     targetPath="${targetsArray[$selection]}"
 
+    # send to target menu --or--
+    # launch target function and return afterward --or--
+    # error out
     if [[ "$targetPath" =~ ^FUNC ]]
     then
         eval ${targetPath,,}
@@ -85,7 +84,7 @@ displayMenu() {
         displayMenu "$targetPath"
     else
         echo "unknown selection target"
-        exit
+        exit 1
     fi
 }
 
