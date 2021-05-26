@@ -1,0 +1,13 @@
+#!/bin/bash
+
+showInfo() {
+    commandTitle="$1"
+    info="$2"
+    dialog --title "Elastic Bash : $commandTitle" --msgbox "$info" 40 100
+}
+
+showMenu() {
+    options="$1"
+    command=$(printf '%b' "dialog --title \"Elastic Bash\" --menu \"Make a Selection\" 20 30 4 $options")
+    eval "$command" 3>&1 1>&2 2>&3 3>&-
+}
