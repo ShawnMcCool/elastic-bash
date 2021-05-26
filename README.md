@@ -38,7 +38,7 @@ If you want to view it with column headings, set 'v'.
 $ v=true ./elastic/indices-overview-by-name <indexName>
 ```
 
-For help use `-h` as the firt argument.
+For help use `-h` as the first argument.
 
 ```bash
 $ ./elastic/custer-health -h
@@ -62,7 +62,7 @@ This will have to be run every time you open a terminal, or be put into your `.b
 
 ## Menu
 
-There's a menu system built in.. Run it with 
+There's a menu system built in. Run it with 
 
 (for console)
 ```bash
