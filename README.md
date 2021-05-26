@@ -12,7 +12,7 @@ It's just another project designed to improve knowledge of a number of topics.
 
 ### is it feature complete?
 
-Not even close, and never will be.
+Not even close, never will be.
 
 ### is it even reasonable to use this?
 
