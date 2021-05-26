@@ -18,7 +18,7 @@ Not even close, and never will be.
 
 As what? In production.. No. For fun? Sure!
 
-### why environment variables
+### why environment variables?
 
 Where's the fun in me giving you all the answers. The design supports easy transitions to POSIX style parameters or whatever else.
 
